@@ -11,7 +11,10 @@ def getHtmlDoc(inputUrl):
 
 
 def getQuestionSolution(soup):
-    return soup.find_all("pre", class_="prettyprint nicefont")[0].string
+    result = soup.find_all("pre", class_="prettyprint nicefont")[0].string
+    result = result.replace("<", "&lt;")
+    result = result.replace(">", "&gt;")
+    return result;
 
 def getQuestionDescription(soup):
     return soup.find_all("div", "post-sum")[0].string
